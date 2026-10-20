@@ -1,0 +1,1228 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#172454" />
+  <meta name="description" content="LTS — مركزك لتعلم الإنجليزية بثقة، في العمل والدراسة وكل لحظة تهمك." />
+  <title>LTS | مركزك للإنجليزية بثقة</title>
+  <style>
+/* LTS English Learning Center - الأنماط الرئيسية */
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap");
+
+:root {
+  --ink: #101424;
+  --ink-soft: #4f566a;
+  --navy: #172454;
+  --blue: #3569ee;
+  --blue-dark: #2246b7;
+  --mint: #13cba1;
+  --mint-soft: #e4fbf5;
+  --paper: #ffffff;
+  --surface: #f6f8fc;
+  --line: #e5e8f0;
+  --radius: 20px;
+  --shadow: 0 22px 60px rgba(25, 40, 84, .10);
+  --font-ar: "Cairo", sans-serif;
+  --font-en: "DM Sans", sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-ar); }
+button, a { -webkit-tap-highlight-color: transparent; }
+button { font: inherit; }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+.lts-app, body > .lts-app { min-height: 100vh; overflow: hidden; background: #fff; }
+.shell { width: min(1180px, calc(100% - 64px)); margin: 0 auto; }
+
+.announcement-bar { background: var(--navy); color: #fff; font-size: 12px; }
+.announcement-inner { min-height: 38px; display: flex; align-items: center; justify-content: center; gap: 9px; position: relative; }
+.announcement-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 0 4px rgba(19, 203, 161, .15); }
+.announcement-link { border: 0; background: transparent; color: #99f2dd; display: inline-flex; gap: 4px; align-items: center; font-size: 11px; margin-inline-start: 13px; }
+.announcement-link svg { transform: scaleX(-1); }
+
+.site-header { position: relative; z-index: 20; background: rgba(255,255,255,.92); border-bottom: 1px solid rgba(229,232,240,.8); backdrop-filter: blur(14px); }
+.nav-inner { min-height: 84px; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; direction: ltr; }
+.brand-mark { width: 35px; height: 35px; border-radius: 11px; background: var(--navy); color: #fff; display: inline-flex; align-items: center; justify-content: center; gap: 1px; font: 700 12px var(--font-en); transform: rotate(-7deg); box-shadow: 6px 6px 0 var(--mint); }
+.brand-mark span:nth-child(2) { color: var(--mint); }
+.brand-copy { display: flex; flex-direction: column; line-height: 1; }
+.brand-copy strong { font: 800 22px var(--font-en); letter-spacing: -.06em; }
+.brand-copy small { font: 600 6px var(--font-en); letter-spacing: .16em; color: var(--blue); margin-top: 4px; }
+.main-nav { display: flex; align-items: center; gap: 31px; color: var(--ink-soft); font-size: 13px; font-weight: 600; flex: 1; justify-content: center; }
+.main-nav a { position: relative; transition: color .2s ease; }
+.main-nav a:first-child, .main-nav a:hover { color: var(--blue); }
+.main-nav a:first-child::after { content: ""; position: absolute; bottom: -11px; left: 50%; transform: translateX(-50%); width: 4px; height: 4px; border-radius: 50%; background: var(--mint); }
+.nav-actions { display: flex; align-items: center; gap: 10px; }
+.language-switch, .mobile-language { background: transparent; border: 0; color: var(--ink-soft); display: inline-flex; align-items: center; gap: 7px; font: 600 12px var(--font-en); }
+.mobile-language, .menu-toggle { display: none; }
+.nav-cta { border-radius: 11px; background: var(--ink); color: #fff; border: 0; height: 42px; padding: 0 19px; font-size: 12px; font-weight: 700; box-shadow: 0 9px 18px rgba(16,20,36,.14); }
+.nav-cta:hover { background: var(--blue); }
+
+.hero-section { background: linear-gradient(180deg, #f8fbff 0%, #f5f8ff 100%); min-height: 580px; position: relative; isolation: isolate; }
+.hero-section::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(53,105,238,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(53,105,238,.035) 1px, transparent 1px); background-size: 64px 64px; mask-image: linear-gradient(90deg, black, transparent 80%); z-index: -2; }
+.hero-orbit { position: absolute; border: 1px solid rgba(53,105,238,.12); border-radius: 50%; z-index: -1; }
+.hero-orbit-one { width: 680px; height: 680px; left: -380px; bottom: -395px; }
+.hero-orbit-two { width: 470px; height: 470px; right: -240px; top: 60px; border-color: rgba(19,203,161,.15); }
+.hero-grid { min-height: 580px; display: grid; grid-template-columns: 1fr .9fr; align-items: center; gap: 70px; padding: 70px 0 74px; }
+.hero-content { max-width: 580px; }
+.eyebrow { color: var(--blue); font: 700 11px var(--font-en); letter-spacing: .1em; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
+.eyebrow svg { color: var(--mint); }
+h1, h2, h3, p { margin: 0; }
+h1 { font-size: clamp(48px, 6vw, 82px); line-height: .98; letter-spacing: -.065em; margin: 22px 0 24px; font-weight: 800; color: var(--ink); }
+h1 span, h2 span { display: block; }
+.hero-body { color: var(--ink-soft); max-width: 480px; line-height: 1.95; font-size: 16px; }
+.hero-actions { display: flex; align-items: center; gap: 25px; margin-top: 30px; }
+.button-primary, .button-light { border: 0; height: 50px; padding: 0 22px; border-radius: 13px; font-size: 13px; font-weight: 700; display: inline-flex; align-items: center; gap: 13px; }
+.button-primary { background: var(--blue); color: #fff; box-shadow: 0 13px 24px rgba(53,105,238,.24); }
+.button-primary:hover { background: var(--blue-dark); transform: translateY(-1px); }
+.button-primary svg, .button-light svg, .arrow-link svg, .course-link svg { transform: scaleX(-1); }
+.text-action { color: var(--ink); border: 0; background: none; display: inline-flex; align-items: center; gap: 9px; font-size: 13px; font-weight: 700; padding: 0; }
+.play-icon { width: 28px; height: 28px; border-radius: 50%; background: var(--mint-soft); color: var(--mint); display: inline-flex; align-items: center; justify-content: center; }
+.play-icon svg { margin-inline-start: 2px; }
+.social-proof { display: flex; align-items: center; gap: 12px; margin-top: 44px; }
+.avatar-stack { display: flex; direction: ltr; }
+.avatar-stack span { width: 29px; height: 29px; border-radius: 50%; border: 2px solid #f8fbff; background: #d4e1ff; color: var(--navy); display: grid; place-items: center; font: 700 8px var(--font-en); margin-left: -8px; }
+.avatar-stack span:nth-child(2) { background: #fee3d1; }
+.avatar-stack span:nth-child(3) { background: #d3f4e8; }
+.avatar-stack span:nth-child(4) { background: var(--navy); color: #fff; margin-left: -8px; width: 37px; }
+.stars { color: #f5b93f; letter-spacing: 2px; font-size: 11px; }
+.social-proof p { color: var(--ink-soft); font-size: 11px; line-height: 1.5; max-width: 245px; }
+.hero-visual { position: relative; max-width: 500px; justify-self: end; width: 100%; }
+.hero-photo-frame { width: min(100%, 460px); aspect-ratio: .92; border-radius: 32px 32px 120px 32px; overflow: hidden; position: relative; box-shadow: var(--shadow); margin: 0 auto; background: #dfe9ff; }
+.hero-photo-frame::after { content: ""; position: absolute; inset: 0; border: 1px solid rgba(255,255,255,.6); border-radius: inherit; }
+.hero-photo-frame img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.hero-photo-wash { position: absolute; inset: 0; background: linear-gradient(150deg, rgba(19,203,161,.14), transparent 38%, rgba(23,36,84,.35)); }
+.hero-card { position: absolute; background: rgba(255,255,255,.94); backdrop-filter: blur(9px); border-radius: 14px; box-shadow: 0 13px 30px rgba(23,36,84,.16); z-index: 2; }
+.hero-card-top { top: 32px; inset-inline-start: -22px; padding: 12px 15px 12px 11px; display: grid; grid-template-columns: 32px auto; column-gap: 9px; align-items: center; min-width: 149px; }
+.hero-card-icon { width: 32px; height: 32px; border-radius: 10px; display: grid; place-items: center; background: var(--mint-soft); color: #0aa781; grid-row: span 2; }
+.hero-card strong { font: 800 20px var(--font-en); line-height: 1; }
+.hero-card small { color: var(--ink-soft); font-size: 9px; margin-top: 4px; }
+.hero-card-bottom { bottom: 22px; inset-inline-end: -25px; padding: 10px 14px; display: flex; gap: 9px; align-items: center; min-width: 230px; }
+.mini-avatar, .person-avatar { display: grid; place-items: center; border-radius: 50%; background: var(--navy); color: #fff; font: 700 9px var(--font-en); }
+.mini-avatar { width: 30px; height: 30px; background: #f2b69b; }
+.hero-card-bottom strong, .hero-card-bottom small { display: block; }
+.hero-card-bottom strong { font: 700 10px var(--font-ar); }
+.hero-card-bottom small { font-size: 9px; }
+.hero-card-bottom > svg { color: var(--mint); margin-inline-start: auto; }
+.hero-sticker { width: 108px; height: 108px; border-radius: 50%; background: var(--mint); color: var(--navy); display: grid; place-content: center; justify-items: center; gap: 5px; position: absolute; bottom: -28px; inset-inline-start: -39px; transform: rotate(-12deg); font-size: 10px; font-weight: 700; text-align: center; box-shadow: 0 12px 22px rgba(19,203,161,.25); }
+
+.stats-section { background: #fff; border-bottom: 1px solid var(--line); }
+.stats-grid { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); align-items: center; min-height: 148px; }
+.stats-intro { padding-inline-end: 30px; border-inline-end: 1px solid var(--line); }
+.stats-kicker { color: var(--blue); font: 700 10px var(--font-en); letter-spacing: .15em; }
+.stats-intro p { font-size: 12px; margin-top: 9px; color: var(--ink-soft); }
+.stat-item { padding: 0 28px; border-inline-end: 1px solid var(--line); }
+.stat-item:last-child { border: 0; }
+.stat-item strong { font: 800 30px var(--font-en); letter-spacing: -.05em; display: block; }
+.stat-item strong span { color: var(--mint); font-size: 18px; }
+.stat-item small { display: block; color: var(--ink-soft); font-size: 11px; margin-top: 5px; }
+
+.section { padding: 126px 0; }
+.centered-heading { text-align: center; }
+.centered-heading .eyebrow { justify-content: center; }
+.section-heading h2 { font-size: clamp(35px, 4vw, 53px); line-height: 1.06; letter-spacing: -.06em; margin: 16px 0 13px; }
+.section-heading p { color: var(--ink-soft); font-size: 15px; line-height: 1.85; }
+.category-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 9px; margin-top: 39px; }
+.category-pill { border: 1px solid var(--line); background: #fff; color: var(--ink-soft); height: 39px; border-radius: 100px; padding: 0 19px; font-size: 12px; font-weight: 600; transition: all .2s ease; }
+.category-pill:hover, .category-pill.active { background: var(--navy); border-color: var(--navy); color: #fff; box-shadow: 0 8px 18px rgba(23,36,84,.14); }
+.course-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 38px; }
+.course-card { border: 1px solid var(--line); border-radius: 20px; overflow: hidden; background: #fff; transition: transform .25s ease, box-shadow .25s ease; }
+.course-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+.course-image-wrap { height: 192px; position: relative; overflow: hidden; background: #eff3fa; }
+.course-image-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+.course-card:hover .course-image-wrap img { transform: scale(1.04); }
+.course-image-gradient { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(12,20,55,.06), rgba(12,20,55,.42)); }
+.course-badge { position: absolute; top: 14px; inset-inline-start: 14px; color: var(--navy); border-radius: 7px; padding: 6px 9px; font-size: 10px; font-weight: 700; }
+.course-play { width: 36px; height: 36px; position: absolute; bottom: 14px; inset-inline-end: 14px; border: 0; border-radius: 50%; background: #fff; color: var(--navy); display: grid; place-items: center; box-shadow: 0 6px 13px rgba(0,0,0,.18); }
+.course-play svg { margin-inline-start: 2px; }
+.course-body { padding: 18px 18px 20px; }
+.course-meta { color: #9097a8; font: 500 10px var(--font-en); display: flex; justify-content: space-between; direction: ltr; }
+.course-body h3 { font-size: 19px; letter-spacing: -.04em; margin-top: 11px; }
+.course-body p { color: var(--ink-soft); font-size: 12px; line-height: 1.8; min-height: 42px; margin-top: 8px; }
+.course-link, .arrow-link { background: none; border: 0; color: var(--blue); display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 700; padding: 0; margin-top: 17px; }
+.course-link:hover, .arrow-link:hover { color: var(--blue-dark); }
+.empty-state { grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--ink-soft); border: 1px dashed var(--line); border-radius: 18px; }
+
+.method-section { background: var(--surface); }
+.method-grid { display: grid; grid-template-columns: 1fr .9fr; gap: 100px; align-items: center; }
+.method-visual { position: relative; padding: 0 0 26px 28px; }
+.method-photo { height: 445px; border-radius: 26px 26px 26px 110px; overflow: hidden; position: relative; }
+.method-photo img { width: 100%; height: 100%; object-fit: cover; }
+.method-overlay { position: absolute; inset: 0; background: linear-gradient(140deg, rgba(19,203,161,.18), rgba(23,36,84,.24)); }
+.method-note { position: absolute; bottom: -2px; inset-inline-start: -4px; background: var(--navy); color: #fff; padding: 17px 21px; border-radius: 13px; display: flex; align-items: center; gap: 14px; font-size: 11px; box-shadow: 0 12px 25px rgba(23,36,84,.19); }
+.note-number { color: var(--mint); font: 800 27px var(--font-en); }
+.floating-label { position: absolute; top: 31px; inset-inline-end: -31px; background: #fff; border-radius: 11px; padding: 10px 13px; display: flex; align-items: center; gap: 7px; font-size: 10px; box-shadow: 0 10px 25px rgba(23,36,84,.12); color: var(--navy); }
+.floating-label svg { color: var(--mint); }
+.method-content { max-width: 440px; }
+.method-content h2 { font-size: clamp(40px, 5vw, 62px); line-height: 1.02; letter-spacing: -.07em; margin: 18px 0 24px; }
+.method-content > p { color: var(--ink-soft); font-size: 15px; line-height: 1.95; }
+.method-list { list-style: none; margin: 28px 0 0; padding: 0; display: grid; gap: 14px; }
+.method-list li { display: flex; align-items: center; gap: 11px; font-size: 13px; font-weight: 600; }
+.method-list li span { background: var(--mint-soft); color: var(--mint); width: 23px; height: 23px; border-radius: 50%; display: grid; place-items: center; }
+
+.featured-section { background: #fff; }
+.split-heading { display: flex; justify-content: space-between; align-items: end; }
+.split-heading .arrow-link { margin: 0 0 5px; }
+.featured-grid { display: grid; grid-template-columns: 1.1fr .95fr .95fr; gap: 20px; margin-top: 42px; }
+.course-card-featured:first-child { grid-row: span 2; }
+.course-card-featured:first-child .course-image-wrap { height: 300px; }
+.course-card-featured:first-child .course-body h3 { font-size: 24px; }
+.course-card-featured:first-child .course-body p { max-width: 360px; }
+
+.stories-section { background: var(--navy); color: #fff; position: relative; overflow: hidden; }
+.stories-section::before { content: ""; position: absolute; width: 700px; height: 700px; border-radius: 50%; border: 1px solid rgba(255,255,255,.08); left: -300px; top: -400px; }
+.stories-section .eyebrow { color: var(--mint); }
+.stories-section .section-heading p { color: #bac4e4; }
+.story-card { max-width: 1000px; margin: 48px auto 0; min-height: 250px; border: 1px solid rgba(255,255,255,.15); border-radius: 22px; padding: 37px 45px; display: grid; grid-template-columns: 80px 1fr auto; align-items: center; gap: 24px; background: rgba(255,255,255,.04); position: relative; }
+.quote-mark { color: var(--mint); align-self: start; }
+.story-quote .stars { margin-bottom: 16px; }
+.story-quote blockquote { font-size: clamp(20px, 2.5vw, 28px); line-height: 1.6; letter-spacing: -.03em; margin: 0; max-width: 700px; font-weight: 500; }
+.story-person { margin-top: 25px; display: flex; align-items: center; gap: 10px; }
+.person-avatar { width: 35px; height: 35px; background: var(--mint); color: var(--navy); }
+.story-person strong, .story-person small { display: block; }
+.story-person strong { font-size: 12px; }
+.story-person small { color: #97a4cd; font-size: 10px; margin-top: 3px; }
+.story-controls { display: flex; flex-direction: column; align-items: center; gap: 17px; color: #aab5d9; font: 600 11px var(--font-en); }
+.story-controls i { font-style: normal; color: #68749a; margin: 0 4px; }
+.story-controls button { width: 35px; height: 35px; border: 1px solid rgba(255,255,255,.2); border-radius: 50%; background: transparent; color: #fff; display: grid; place-items: center; }
+.story-controls button:hover { background: var(--mint); color: var(--navy); border-color: var(--mint); }
+
+.faq-section { background: var(--surface); }
+.faq-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 110px; align-items: start; }
+.faq-intro h2 { font-size: clamp(38px, 4.5vw, 59px); line-height: 1.04; letter-spacing: -.07em; margin: 19px 0 22px; }
+.faq-intro p { color: var(--ink-soft); line-height: 1.8; font-size: 13px; }
+.faq-intro .text-action { margin-top: 23px; color: var(--blue); }
+.faq-list { border-top: 1px solid var(--line); }
+.faq-item { border-bottom: 1px solid var(--line); }
+.faq-item button { border: 0; background: transparent; width: 100%; min-height: 72px; display: flex; justify-content: space-between; align-items: center; gap: 18px; text-align: start; color: var(--ink); font-size: 15px; font-weight: 700; padding: 0; }
+.faq-item button svg { transition: transform .25s; color: var(--blue); flex-shrink: 0; }
+.faq-item.open button svg { transform: rotate(180deg); }
+.faq-item p { color: var(--ink-soft); font-size: 13px; line-height: 1.9; max-width: 620px; padding: 0 0 22px; }
+
+.final-cta-section { background: var(--mint); color: var(--navy); }
+.final-cta-inner { min-height: 260px; display: grid; grid-template-columns: 52px 1fr auto; gap: 22px; align-items: center; }
+.cta-sparkle { width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid rgba(23,36,84,.22); border-radius: 14px; transform: rotate(-9deg); }
+.final-cta-inner .eyebrow { color: var(--navy); }
+.final-cta-inner h2 { font-size: clamp(35px, 4.2vw, 55px); letter-spacing: -.065em; margin: 10px 0 7px; }
+.final-cta-inner p { font-size: 14px; color: rgba(23,36,84,.72); }
+.button-light { background: var(--navy); color: #fff; height: 52px; }
+.button-light:hover { background: #fff; color: var(--navy); }
+
+.site-footer { background: #fff; }
+.footer-grid { min-height: 170px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 30px; }
+.footer-brand p { color: var(--ink-soft); font-size: 12px; margin-top: 17px; }
+.footer-links { display: flex; gap: 27px; color: var(--ink-soft); font-size: 12px; font-weight: 600; }
+.footer-links a:hover { color: var(--blue); }
+.footer-meta { justify-self: end; display: flex; flex-direction: column; align-items: end; gap: 7px; color: #9aa1b0; font-size: 10px; }
+.toast-message { position: fixed; z-index: 50; bottom: 24px; inset-inline-start: 50%; transform: translateX(-50%); background: var(--navy); color: #fff; border: 1px solid rgba(255,255,255,.15); box-shadow: 0 12px 30px rgba(16,20,36,.22); border-radius: 13px; padding: 13px 18px; display: flex; align-items: center; gap: 9px; font-size: 12px; animation: toast-in .28s ease-out; }
+.toast-message svg { color: var(--mint); }
+@keyframes toast-in { from { opacity: 0; transform: translate(-50%, 12px); } to { opacity: 1; transform: translate(-50%, 0); } }
+
+@media (max-width: 900px) {
+  .shell { width: min(100% - 40px, 680px); }
+  .nav-inner { min-height: 74px; }
+  .main-nav { gap: 17px; }
+  .main-nav a { font-size: 11px; }
+  .nav-cta { padding: 0 13px; font-size: 11px; }
+  .hero-grid { grid-template-columns: 1fr .8fr; gap: 28px; padding: 58px 0; }
+  h1 { font-size: 58px; }
+  .hero-body { font-size: 14px; }
+  .hero-card-top { inset-inline-start: -8px; }
+  .hero-card-bottom { inset-inline-end: -8px; }
+  .stats-grid { grid-template-columns: 1.1fr repeat(3, 1fr); }
+  .stats-intro { padding-inline-end: 15px; }
+  .stat-item { padding: 0 15px; }
+  .method-grid { gap: 45px; }
+  .faq-grid { gap: 45px; }
+  .story-card { padding: 30px; }
+}
+
+@media (max-width: 680px) {
+  .shell { width: min(100% - 32px, 520px); }
+  .announcement-inner { text-align: center; font-size: 10px; min-height: 42px; }
+  .announcement-link { display: none; }
+  .nav-inner { min-height: 68px; }
+  .main-nav { display: none; position: absolute; top: 68px; inset-inline: 0; background: #fff; padding: 21px 20px 24px; border-bottom: 1px solid var(--line); box-shadow: 0 15px 25px rgba(16,20,36,.08); flex-direction: column; align-items: stretch; gap: 0; }
+  .main-nav.is-open { display: flex; }
+  .main-nav a { padding: 13px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
+  .main-nav a:first-child::after { display: none; }
+  .mobile-language { display: flex; padding-top: 16px; }
+  .language-switch, .nav-cta { display: none; }
+  .menu-toggle { display: grid; place-items: center; background: transparent; border: 0; color: var(--ink); width: 38px; height: 38px; }
+  .hero-section { min-height: 0; }
+  .hero-grid { display: flex; flex-direction: column; padding: 55px 0 78px; gap: 43px; align-items: stretch; }
+  .hero-content { text-align: center; }
+  .eyebrow { justify-content: center; }
+  h1 { font-size: clamp(48px, 15vw, 68px); margin-top: 18px; }
+  .hero-body { margin: auto; font-size: 13px; line-height: 1.9; }
+  .hero-actions { justify-content: center; gap: 16px; flex-wrap: wrap; }
+  .button-primary { height: 48px; }
+  .social-proof { justify-content: center; margin-top: 31px; text-align: start; }
+  .hero-visual { max-width: 420px; margin: 0 auto; }
+  .hero-photo-frame { width: calc(100% - 32px); aspect-ratio: 1; border-radius: 26px 26px 86px 26px; }
+  .hero-sticker { width: 87px; height: 87px; inset-inline-start: -3px; bottom: -27px; font-size: 9px; }
+  .hero-card-top { top: 20px; inset-inline-start: -2px; transform: scale(.88); transform-origin: top left; }
+  .hero-card-bottom { bottom: 16px; inset-inline-end: -3px; transform: scale(.86); transform-origin: bottom right; }
+  .stats-grid { grid-template-columns: repeat(3, 1fr); min-height: 150px; gap: 0; }
+  .stats-intro { grid-column: 1 / -1; border: 0; padding: 22px 0 4px; text-align: center; }
+  .stats-intro p { margin-top: 4px; }
+  .stat-item { text-align: center; padding: 16px 5px 22px; }
+  .stat-item strong { font-size: 23px; }
+  .stat-item small { font-size: 9px; line-height: 1.4; }
+  .section { padding: 83px 0; }
+  .section-heading h2 { font-size: 42px; }
+  .section-heading p { font-size: 13px; }
+  .category-row { margin-top: 26px; justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; }
+  .category-row::-webkit-scrollbar { display: none; }
+  .category-pill { white-space: nowrap; padding: 0 15px; }
+  .course-grid, .featured-grid { grid-template-columns: 1fr; gap: 16px; }
+  .course-image-wrap, .course-card-featured:first-child .course-image-wrap { height: 208px; }
+  .course-card-featured:first-child { grid-row: auto; }
+  .course-card-featured:first-child .course-body h3 { font-size: 21px; }
+  .method-grid, .faq-grid { grid-template-columns: 1fr; gap: 45px; }
+  .method-visual { padding: 0 0 22px 12px; }
+  .method-photo { height: 370px; border-radius: 22px 22px 22px 82px; }
+  .floating-label { inset-inline-end: -3px; }
+  .method-content { text-align: center; }
+  .method-content .eyebrow { justify-content: center; }
+  .method-content h2 { font-size: 50px; }
+  .method-list { text-align: start; max-width: 280px; margin-inline: auto; }
+  .arrow-link { margin-top: 23px; }
+  .split-heading { align-items: start; flex-direction: column; gap: 15px; }
+  .split-heading .arrow-link { margin: 0; }
+  .featured-grid { margin-top: 29px; }
+  .story-card { grid-template-columns: 1fr; gap: 0; padding: 29px 23px 24px; }
+  .quote-mark { margin-bottom: 15px; }
+  .story-quote blockquote { font-size: 19px; line-height: 1.7; }
+  .story-controls { flex-direction: row; justify-content: flex-end; margin-top: 24px; }
+  .faq-intro { text-align: center; }
+  .faq-intro .eyebrow { justify-content: center; }
+  .faq-intro h2 { font-size: 45px; }
+  .faq-intro .text-action { margin-inline: auto; }
+  .faq-item button { font-size: 13px; min-height: 68px; }
+  .faq-item p { font-size: 12px; }
+  .final-cta-inner { grid-template-columns: 1fr; gap: 16px; padding: 44px 0; text-align: center; }
+  .cta-sparkle { margin: 0 auto; }
+  .final-cta-inner .eyebrow { justify-content: center; }
+  .final-cta-inner p { line-height: 1.8; }
+  .button-light { margin: 5px auto 0; }
+  .footer-grid { grid-template-columns: 1fr; gap: 23px; padding: 38px 0; text-align: center; }
+  .footer-brand .brand { justify-content: center; }
+  .footer-links { justify-content: center; gap: 17px; }
+  .footer-meta { justify-self: center; align-items: center; }
+  .toast-message { width: max-content; max-width: calc(100% - 32px); text-align: center; }
+}
+
+[dir="ltr"] body, [dir="ltr"] .hero-body, [dir="ltr"] .course-body p, [dir="ltr"] .faq-item p, [dir="ltr"] .final-cta-inner p { font-family: var(--font-en); }
+[dir="ltr"] .brand-copy, [dir="ltr"] .course-body, [dir="ltr"] .faq-item, [dir="ltr"] .method-content, [dir="ltr"] .faq-intro, [dir="ltr"] .final-cta-inner { text-align: left; }
+[dir="ltr"] .eyebrow { letter-spacing: .08em; }
+
+
+/* LTS refresh: light-blue identity, text-led course covers, and sourced social proof */
+:root {
+  --blue: #76c4ff;
+  --blue-dark: #2b8cde;
+  --navy: #13204d;
+  --mint: #19cfa6;
+}
+.brand-mark { background: var(--blue); color: var(--navy); box-shadow: 6px 6px 0 var(--navy); }
+.brand-mark { background: #73bbf2; }
+.brand-mark span:nth-child(2) { color: #000; }
+.brand-copy strong { color: var(--blue-dark); }
+.nav-cta { background: var(--blue); color: var(--navy); }
+.nav-cta:hover { background: var(--blue-dark); color: #fff; }
+.button-primary { background: var(--blue); color: var(--navy); box-shadow: 0 13px 24px rgba(118,196,255,.28); }
+.button-primary:hover { background: var(--blue-dark); color: #fff; }
+.eyebrow, .course-link, .arrow-link, .faq-intro .text-action { color: var(--blue-dark); }
+.category-pill:hover, .category-pill.active { background: var(--navy); border-color: var(--navy); }
+.hero-section { background: linear-gradient(180deg, #f8fcff 0%, #edf8ff 100%); }
+.hero-section::before { background-image: linear-gradient(rgba(118,196,255,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(118,196,255,.08) 1px, transparent 1px); }
+
+.course-image-wrap { background: linear-gradient(135deg, var(--course-accent, #dcefff), #f6fbff 72%); }
+.course-cover-grid { position: absolute; inset: 0; opacity: .5; background-image: linear-gradient(rgba(19,32,77,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(19,32,77,.07) 1px, transparent 1px); background-size: 26px 26px; }
+.course-cover-grid::after { content: ""; width: 220px; height: 220px; border: 1px solid rgba(19,32,77,.12); border-radius: 50%; position: absolute; top: -104px; inset-inline-end: -74px; box-shadow: 0 0 0 24px rgba(255,255,255,.2), 0 0 0 48px rgba(255,255,255,.18); }
+.course-cover-brand { position: absolute; inset-inline-start: 17px; top: 18px; display: flex; align-items: baseline; gap: 7px; color: var(--navy); direction: ltr; }
+.course-cover-brand span { font: 800 30px var(--font-en); letter-spacing: -.09em; color: var(--blue-dark); }
+.course-cover-brand small { font: 700 9px var(--font-en); letter-spacing: .08em; opacity: .6; }
+.course-cover-title { position: absolute; inset-inline-start: 19px; bottom: 22px; color: var(--navy); font: 700 11px var(--font-en); letter-spacing: .1em; text-transform: uppercase; }
+.course-cover-title strong { display: block; font-family: var(--font-ar); font-size: 19px; letter-spacing: -.04em; text-transform: none; margin-top: 5px; }
+[dir="ltr"] .course-cover-title strong { font-family: var(--font-en); }
+
+.stories-section { background: var(--navy); }
+.review-panel { max-width: 1000px; margin: 48px auto 0; min-height: 250px; border: 1px solid rgba(255,255,255,.15); border-radius: 22px; padding: 38px 45px; display: grid; grid-template-columns: 65px 1fr 210px; align-items: center; gap: 28px; background: linear-gradient(135deg, rgba(118,196,255,.16), rgba(255,255,255,.035)); }
+.review-google-mark { width: 54px; height: 54px; display: grid; place-items: center; border-radius: 16px; background: #fff; color: #4285f4; font: 800 30px var(--font-en); box-shadow: 0 10px 24px rgba(0,0,0,.14); }
+.review-panel-copy h3 { font-size: 23px; letter-spacing: -.04em; margin: 11px 0 9px; }
+.review-panel-copy p { color: #b8c5e6; font-size: 13px; line-height: 1.8; max-width: 550px; }
+.button-google { margin-top: 18px; border: 1px solid rgba(118,196,255,.45); border-radius: 10px; color: var(--blue); padding: 10px 14px; display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; }
+.button-google svg { transform: scaleX(-1); }
+.button-google:hover { background: var(--blue); color: var(--navy); }
+.social-counts { border-inline-start: 1px solid rgba(255,255,255,.14); padding-inline-start: 25px; display: grid; gap: 17px; }
+.social-counts a { display: flex; align-items: center; gap: 10px; color: #fff; }
+.social-counts strong, .social-counts small { display: block; }
+.social-counts strong { font: 800 21px var(--font-en); letter-spacing: -.05em; }
+.social-counts small { color: #a6b4d7; font-size: 10px; margin-top: 2px; }
+.social-icon { width: 32px; height: 32px; border-radius: 10px; display: grid; place-items: center; font: 800 18px var(--font-en); }
+.social-icon.facebook { background: #1877f2; }
+.social-icon.instagram { background: linear-gradient(135deg, #f9ce34, #ee2a7b 52%, #6228d7); }
+.button-light { background: var(--navy); }
+@media (max-width: 680px) {
+  .review-panel { grid-template-columns: 1fr; gap: 16px; text-align: center; padding: 30px 22px; }
+  .review-google-mark { margin: auto; }
+  .review-panel-copy .stars { text-align: center; }
+  .review-panel-copy h3 { font-size: 20px; }
+  .review-panel-copy p { margin: auto; }
+  .button-google { margin-inline: auto; }
+  .social-counts { border-inline-start: 0; border-top: 1px solid rgba(255,255,255,.14); padding: 20px 0 0; grid-template-columns: 1fr 1fr; text-align: start; }
+}
+
+.developer-credit { color: var(--blue-dark); font-family: var(--font-en); font-weight: 700; letter-spacing: .04em; }
+
+/* ---------- إضافات صغيرة بعد التحويل من React ---------- */
+button, .button-google, .button-light { cursor: pointer; }
+.toast-message[hidden] { display: none; }
+.nav-cta, .button-primary { font-family: inherit; }
+
+/* ---------- شريط الكوكيز السفلي ---------- */
+.cookie-bar { position: fixed; z-index: 45; left: 0; right: 0; bottom: 0; background: #fff; color: var(--ink); border-top: 1px solid var(--line); box-shadow: 0 -10px 30px rgba(16,20,36,.14); }
+.cookie-bar[hidden], .cookie-panel[hidden] { display: none !important; }
+.cookie-inner { width: min(1180px, calc(100% - 48px)); margin: 0 auto; padding: 18px 0; display: flex; align-items: center; gap: 28px; }
+.cookie-text { flex: 1; font-size: 13px; line-height: 1.8; color: var(--ink); }
+.cookie-actions { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+.cookie-btn { font-family: inherit; font-size: 13px; font-weight: 700; height: 44px; padding: 0 22px; border-radius: 6px; border: 2px solid var(--navy); background: var(--navy); color: #fff; white-space: nowrap; transition: background .2s ease, color .2s ease; }
+.cookie-btn:hover { background: var(--blue-dark); border-color: var(--blue-dark); }
+.cookie-outline { background: #fff; color: var(--navy); }
+.cookie-outline:hover { background: var(--navy); border-color: var(--navy); color: #fff; }
+.cookie-close { border: 0; background: transparent; color: var(--ink); width: 36px; height: 36px; display: grid; place-items: center; flex-shrink: 0; }
+.cookie-close:hover { color: var(--blue-dark); }
+.cookie-panel { width: min(1180px, calc(100% - 48px)); margin: 0 auto; padding: 0 0 18px; display: flex; align-items: center; flex-wrap: wrap; gap: 12px 28px; border-top: 1px solid var(--line); padding-top: 14px; }
+.cookie-panel label { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; }
+.cookie-panel input { width: 17px; height: 17px; accent-color: var(--navy); }
+.cookie-panel .cookie-btn { height: 40px; margin-inline-start: auto; }
+.cookie-bar:not([hidden]) ~ .toast-message { bottom: 120px; }
+
+@media (max-width: 820px) {
+  .cookie-inner { flex-wrap: wrap; gap: 14px; padding: 16px 0; position: relative; }
+  .cookie-text { flex-basis: 100%; padding-inline-end: 36px; font-size: 12px; }
+  .cookie-close { position: absolute; top: 10px; inset-inline-end: 0; }
+  .cookie-actions { flex-basis: 100%; flex-wrap: wrap; }
+  .cookie-btn { flex: 1; padding: 0 12px; font-size: 12px; height: 42px; }
+  .cookie-panel .cookie-btn { flex: none; margin-inline-start: 0; }
+  .cookie-bar:not([hidden]) ~ .toast-message { bottom: 190px; }
+}
+
+/* ---------- الفوتر الجديد (3 أعمدة) ---------- */
+.site-footer { background: #f4f6fa; border-top: 1px solid var(--line); }
+.footer-cols { display: grid; grid-template-columns: 1.25fr 1fr 1fr; gap: 64px; padding: 64px 0 48px; align-items: start; }
+.footer-title { font-size: 15px; font-weight: 800; color: var(--ink); padding-bottom: 12px; margin: 28px 0 16px; border-bottom: 1px solid #d9deea; }
+.footer-about .brand { margin-bottom: 6px; }
+.footer-about .footer-title:first-of-type { margin-top: 22px; }
+.footer-col > .footer-title:first-child { margin-top: 0; }
+.footer-text { color: var(--ink-soft); font-size: 12.5px; line-height: 2; }
+.footer-link-list, .footer-contact { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.footer-link-list a { color: var(--ink); font-size: 12.5px; font-weight: 700; display: inline-flex; align-items: center; gap: 7px; transition: color .2s ease; }
+.footer-link-list a:hover, .footer-contact a:hover { color: var(--blue-dark); }
+.ext-icon { opacity: .7; flex-shrink: 0; }
+.footer-contact li { display: flex; align-items: flex-start; gap: 10px; color: var(--ink-soft); font-size: 12.5px; line-height: 1.8; }
+.footer-contact li svg { color: var(--blue-dark); margin-top: 4px; flex-shrink: 0; }
+.footer-contact a { color: var(--ink); font-weight: 700; }
+.footer-contact .contact-details { padding-top: 4px; }
+.footer-contact .contact-details a { color: var(--blue-dark); display: inline-flex; align-items: center; gap: 7px; }
+.footer-social { display: flex; gap: 14px; }
+.footer-social a { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 12px; border: 1px solid #d9deea; background: #fff; color: var(--ink); transition: all .2s ease; }
+.footer-social a:hover { background: var(--navy); border-color: var(--navy); color: #fff; }
+.footer-bottom { border-top: 1px solid #d9deea; background: #eceff6; }
+.footer-bottom-inner { min-height: 56px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px 24px; color: #7d8496; font-size: 11px; }
+body:has(.cookie-bar:not([hidden])) .site-footer { padding-bottom: 110px; }
+
+@media (max-width: 900px) {
+  .footer-cols { grid-template-columns: 1fr 1fr; gap: 44px 40px; }
+  .footer-about { grid-column: 1 / -1; }
+}
+@media (max-width: 680px) {
+  .footer-cols { grid-template-columns: 1fr; padding: 44px 0 32px; }
+  .footer-bottom-inner { justify-content: center; text-align: center; flex-direction: column; padding: 14px 0; }
+}
+
+/* رسومات SVG بدل الصور الخارجية */
+.scene { display: block; width: 100%; height: 100%; direction: ltr; unicode-bidi: isolate; }
+
+</style>
+</head>
+<body>
+
+<!-- أيقونات SVG (بتتستخدم بـ <use href="#اسم">) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4l14 8-14 8z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-sparkles" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 17v4M17 19h4"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"/></symbol>
+    <symbol id="i-headphones" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14v-2a9 9 0 0 1 18 0v2"/><path d="M21 15a2 2 0 0 1-2 2h-1v-5h3zM3 15a2 2 0 0 0 2 2h1v-5H3z"/></symbol>
+    <symbol id="i-message" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L3 21l1.9-6.4A8 8 0 1 1 21 12z"/></symbol>
+    <symbol id="i-zap" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 3 14h8l-1 8 10-12h-8z"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
+    <symbol id="i-help" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="8" r="4"/><path d="M2 21a8 8 0 0 1 12.5-6.6"/><circle cx="18" cy="17" r="4"/><path d="M18 15.5v1.8M18 19.2v.1"/></symbol>
+    <symbol id="i-facebook" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  </defs>
+</svg>
+
+<div class="lts-app">
+
+  <!-- شريط الإعلان -->
+  <div class="announcement-bar">
+    <div class="shell announcement-inner">
+      <span class="announcement-dot"></span>
+      <span data-i18n="announce"></span>
+      <button type="button" class="announcement-link js-cta">
+        <span data-i18n="explore"></span>
+        <svg width="14" height="14"><use href="#i-arrow"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- الهيدر -->
+  <header class="site-header">
+    <div class="shell nav-inner">
+      <a class="brand" href="#top" aria-label="LTS home">
+        <span class="brand-mark"><span>L</span><span>T</span><span>S</span></span>
+        <span class="brand-copy"><strong>LTS</strong><small>LANGUAGE STUDIO</small></span>
+      </a>
+      <nav class="main-nav" id="mainNav" aria-label="Primary navigation">
+        <a href="#top" data-i18n="nav.0"></a>
+        <a href="#courses" data-i18n="nav.1"></a>
+        <a href="#method" data-i18n="nav.2"></a>
+        <a href="#stories" data-i18n="nav.3"></a>
+        <button type="button" class="mobile-language js-lang">
+          <svg width="15" height="15"><use href="#i-globe"/></svg>
+          <span class="lang-label-long"></span>
+        </button>
+      </nav>
+      <div class="nav-actions">
+        <button type="button" class="language-switch js-lang">
+          <svg width="16" height="16"><use href="#i-globe"/></svg>
+          <span class="lang-label-short"></span>
+        </button>
+        <button type="button" class="nav-cta js-cta" data-i18n="start"></button>
+        <button type="button" class="menu-toggle" id="menuToggle" aria-label="Menu">
+          <svg width="21" height="21"><use id="menuIcon" href="#i-menu"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- Hero -->
+    <section class="hero-section">
+      <div class="hero-orbit hero-orbit-one"></div>
+      <div class="hero-orbit hero-orbit-two"></div>
+      <div class="shell hero-grid">
+        <div class="hero-content">
+          <div class="eyebrow"><svg width="15" height="15"><use href="#i-sparkles"/></svg><span data-i18n="heroEyebrow"></span></div>
+          <h1 data-i18n-lines="heroTitle"></h1>
+          <p class="hero-body" data-i18n="heroBody"></p>
+          <div class="hero-actions">
+            <button type="button" class="button-primary js-cta"><span data-i18n="start"></span><svg width="17" height="17"><use href="#i-arrow"/></svg></button>
+            <button type="button" class="text-action js-scroll" data-target="method">
+              <span class="play-icon"><svg width="13" height="13"><use href="#i-play"/></svg></span>
+              <span data-i18n="learnMore"></span>
+            </button>
+          </div>
+          <div class="social-proof">
+            <div class="avatar-stack" aria-hidden="true"><span>SA</span><span>OM</span><span>LK</span><span>+18k</span></div>
+            <div><div class="stars">★★★★★</div><p data-i18n="proof"></p></div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-photo-frame">
+            <svg class="scene" viewBox="0 0 460 500" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Students learning English together">
+              <defs>
+                <linearGradient id="gHero" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#cfeaff"/><stop offset="1" stop-color="#e4f8f1"/></linearGradient>
+              </defs>
+              <rect width="460" height="500" fill="url(#gHero)"/>
+              <circle cx="390" cy="120" r="125" fill="#fff" opacity=".45"/>
+              <circle cx="40" cy="430" r="150" fill="#73bbf2" opacity=".25"/>
+              <!-- بطاقات حروف -->
+              <g transform="rotate(8 365 125)"><rect x="330" y="92" width="72" height="66" rx="14" fill="#fff"/><text x="366" y="136" text-anchor="middle" font-family="DM Sans, Arial, sans-serif" font-size="28" font-weight="800" fill="#2b8cde">Aa</text></g>
+              <g transform="rotate(-8 85 160)"><rect x="52" y="128" width="76" height="62" rx="14" fill="#19cfa6"/><text x="90" y="168" text-anchor="middle" font-family="DM Sans, Arial, sans-serif" font-size="22" font-weight="800" fill="#13204d">ABC</text></g>
+              <path d="M300 60l4 10 10 4-10 4-4 10-4-10-10-4 10-4z" fill="#f5b93f"/>
+              <path d="M60 80l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" fill="#fff"/>
+              <!-- فقاعات الكلام -->
+              <rect x="92" y="212" width="116" height="44" rx="22" fill="#fff"/>
+              <path d="M150 255l14 22 5-23z" fill="#fff"/>
+              <text x="150" y="240" text-anchor="middle" font-family="DM Sans, Arial, sans-serif" font-size="19" font-weight="800" fill="#13204d">Hello!</text>
+              <rect x="248" y="186" width="148" height="44" rx="22" fill="#13204d"/>
+              <path d="M322 229l12 24 6-24z" fill="#13204d"/>
+              <text x="322" y="214" text-anchor="middle" font-family="DM Sans, Arial, sans-serif" font-size="16" font-weight="700" fill="#fff">How are you?</text>
+              <!-- الشخص الأول -->
+              <rect x="128" y="338" width="84" height="110" rx="38" fill="#3b7dd8"/>
+              <circle cx="170" cy="304" r="32" fill="#f2c9a5"/>
+              <path d="M138 300c0-26 16-40 34-40 20 0 32 14 32 34-10-12-24-18-40-16-12 2-20 8-26 22z" fill="#2a1f1a"/>
+              <circle cx="159" cy="306" r="3" fill="#2a1f1a"/><circle cx="181" cy="306" r="3" fill="#2a1f1a"/>
+              <path d="M160 318q10 9 20 0" stroke="#2a1f1a" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <!-- الشخص الثاني -->
+              <rect x="258" y="338" width="84" height="110" rx="38" fill="#19cfa6"/>
+              <circle cx="300" cy="304" r="32" fill="#c98f67"/>
+              <path d="M266 304c-2-28 14-46 36-46 22 0 34 16 32 40-6-14-16-20-34-20-16 0-28 8-34 26z" fill="#13204d"/>
+              <circle cx="289" cy="306" r="3" fill="#2a1f1a"/><circle cx="311" cy="306" r="3" fill="#2a1f1a"/>
+              <path d="M290 318q10 9 20 0" stroke="#2a1f1a" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <!-- الترابيزة -->
+              <rect x="-10" y="408" width="480" height="100" fill="#c9a276"/>
+              <rect x="-10" y="404" width="480" height="14" fill="#dcbb8f"/>
+              <!-- لاب توب -->
+              <rect x="186" y="346" width="88" height="56" rx="6" fill="#13204d"/>
+              <rect x="194" y="354" width="72" height="40" rx="3" fill="#1d2f6b"/>
+              <rect x="202" y="362" width="40" height="4" rx="2" fill="#19cfa6"/><rect x="202" y="372" width="54" height="4" rx="2" fill="#73bbf2"/><rect x="202" y="382" width="30" height="4" rx="2" fill="#fff" opacity=".7"/>
+              <rect x="172" y="400" width="116" height="9" rx="4" fill="#d9dfec"/>
+              <!-- كتب وكوباية -->
+              <rect x="36" y="386" width="76" height="18" rx="3" fill="#19cfa6"/>
+              <rect x="44" y="368" width="62" height="18" rx="3" fill="#f5b93f"/>
+              <rect x="50" y="352" width="50" height="16" rx="3" fill="#3b7dd8"/>
+              <rect x="372" y="376" width="30" height="28" rx="6" fill="#fff"/>
+              <path d="M402 384q14 2 0 14" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round"/>
+            </svg>
+            <div class="hero-photo-wash"></div>
+            <div class="hero-card hero-card-top">
+              <span class="hero-card-icon"><svg width="17" height="17"><use href="#i-target"/></svg></span>
+              <strong>+42%</strong><small data-i18n="heroProgress"></small>
+            </div>
+            <div class="hero-card hero-card-bottom">
+              <span class="mini-avatar">AS</span>
+              <span><strong data-i18n="heroRight"></strong><small data-i18n="heroVoice"></small></span>
+              <svg width="18" height="18"><use href="#i-check"/></svg>
+            </div>
+          </div>
+          <div class="hero-sticker"><svg width="18" height="18"><use href="#i-book"/></svg><span data-i18n="heroSticker"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- الإحصاءات -->
+    <section class="stats-section">
+      <div class="shell stats-grid">
+        <div class="stats-intro"><span class="stats-kicker">LTS / 2024</span><p data-i18n="statsIntro"></p></div>
+        <div class="stat-item"><strong>18<span>k+</span></strong><small data-i18n="stats.0"></small></div>
+        <div class="stat-item"><strong>45<span>+</span></strong><small data-i18n="stats.1"></small></div>
+        <div class="stat-item"><strong>96<span>%</span></strong><small data-i18n="stats.2"></small></div>
+      </div>
+    </section>
+
+    <!-- الدورات (بتتولد من script.js) -->
+    <section id="courses" class="section courses-section">
+      <div class="shell">
+        <div class="section-heading centered-heading">
+          <div class="eyebrow"><span>01 / </span><span data-i18n="pathsLabel"></span></div>
+          <h2 data-i18n="pathTitle"></h2>
+          <p data-i18n="pathBody"></p>
+        </div>
+        <div class="category-row" id="categoryRow" role="tablist"></div>
+        <div class="course-grid" id="courseGrid"></div>
+      </div>
+    </section>
+
+    <!-- المنهج -->
+    <section id="method" class="section method-section">
+      <div class="shell method-grid">
+        <div class="method-visual">
+          <div class="method-photo">
+            <svg class="scene" viewBox="0 0 480 445" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Listen, speak, grow">
+              <defs>
+                <linearGradient id="gMethod" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d6e8ff"/><stop offset="1" stop-color="#e2f8f0"/></linearGradient>
+              </defs>
+              <rect width="480" height="445" fill="url(#gMethod)"/>
+              <circle cx="90" cy="90" r="130" fill="#fff" opacity=".4"/>
+              <circle cx="430" cy="380" r="140" fill="#73bbf2" opacity=".25"/>
+              <!-- موجات الصوت -->
+              <g fill="none" stroke="#2b8cde" stroke-width="6" stroke-linecap="round" opacity=".55">
+                <path d="M78 195q-18 20 0 40"/><path d="M54 180q-34 35 0 70"/>
+                <path d="M402 195q18 20 0 40"/><path d="M426 180q34 35 0 70"/>
+              </g>
+              <!-- السماعة -->
+              <path d="M122 215a118 118 0 0 1 236 0" fill="none" stroke="#13204d" stroke-width="22" stroke-linecap="round"/>
+              <rect x="98" y="190" width="52" height="112" rx="26" fill="#73bbf2" stroke="#13204d" stroke-width="8"/>
+              <rect x="330" y="190" width="52" height="112" rx="26" fill="#73bbf2" stroke="#13204d" stroke-width="8"/>
+              <!-- فقاعة محادثة -->
+              <rect x="190" y="160" width="100" height="62" rx="20" fill="#19cfa6"/>
+              <path d="M214 221l-6 20 24-20z" fill="#19cfa6"/>
+              <circle cx="220" cy="191" r="6" fill="#13204d"/><circle cx="240" cy="191" r="6" fill="#13204d"/><circle cx="260" cy="191" r="6" fill="#13204d"/>
+              <!-- أعمدة التقدم -->
+              <g>
+                <rect x="190" y="338" width="20" height="30" rx="5" fill="#73bbf2"/>
+                <rect x="218" y="322" width="20" height="46" rx="5" fill="#3b7dd8"/>
+                <rect x="246" y="304" width="20" height="64" rx="5" fill="#19cfa6"/>
+                <rect x="274" y="284" width="20" height="84" rx="5" fill="#13204d"/>
+              </g>
+              <path d="M196 318l26-22 22-4 44-30" fill="none" stroke="#f5b93f" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M278 256l8-3-3 9z" fill="#f5b93f" stroke="#f5b93f" stroke-width="3" stroke-linejoin="round"/>
+              <path d="M412 70l4 11 11 4-11 4-4 11-4-11-11-4 11-4z" fill="#f5b93f"/>
+              <path d="M70 330l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" fill="#fff"/>
+            </svg>
+            <div class="method-overlay"></div>
+          </div>
+          <div class="method-note"><span class="note-number">03</span><span data-i18n="methodNote"></span></div>
+          <div class="floating-label"><svg width="16" height="16"><use href="#i-headphones"/></svg><span data-i18n="methodLabel"></span></div>
+        </div>
+        <div class="method-content">
+          <div class="eyebrow"><span>02 / </span><span data-i18n="methodEyebrow"></span></div>
+          <h2 data-i18n-lines="methodTitle"></h2>
+          <p data-i18n="methodBody"></p>
+          <ul class="method-list" id="methodList"></ul>
+          <button type="button" class="arrow-link js-scroll" data-target="contact"><span data-i18n="methodLink"></span><svg width="16" height="16"><use href="#i-arrow"/></svg></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- دورات مختارة -->
+    <section class="section featured-section">
+      <div class="shell">
+        <div class="section-heading split-heading">
+          <div>
+            <div class="eyebrow"><span>03 / </span><span data-i18n="curatedLabel"></span></div>
+            <h2 data-i18n="featured"></h2>
+          </div>
+          <button type="button" class="arrow-link" id="viewAll"><span data-i18n="viewAll"></span><svg width="16" height="16"><use href="#i-arrow"/></svg></button>
+        </div>
+        <div class="featured-grid" id="featuredGrid"></div>
+      </div>
+    </section>
+
+    <!-- آراء الطلاب -->
+    <section id="stories" class="section stories-section">
+      <div class="shell">
+        <div class="section-heading centered-heading">
+          <div class="eyebrow"><span>04 / </span><span data-i18n="reviewsLabel"></span></div>
+          <h2 data-i18n="testimonials"></h2>
+          <p data-i18n="testimonialsBody"></p>
+        </div>
+        <div class="review-panel">
+          <div class="review-google-mark">G</div>
+          <div class="review-panel-copy">
+            <div class="stars">★★★★★</div>
+            <h3 data-i18n="reviewTitle"></h3>
+            <p data-i18n="reviewText"></p>
+            <a class="button-google" id="googleLink" target="_blank" rel="noreferrer"><span data-i18n="reviewBtn"></span><svg width="16" height="16"><use href="#i-arrow"/></svg></a>
+          </div>
+          <div class="social-counts">
+            <a id="facebookLink" target="_blank" rel="noreferrer"><span class="social-icon facebook">f</span><span><strong>588K</strong><small>Facebook</small></span></a>
+            <a id="instagramLink" target="_blank" rel="noreferrer"><span class="social-icon instagram">◎</span><span><strong>435K</strong><small>Instagram</small></span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- الأسئلة الشائعة -->
+    <section id="faq" class="section faq-section">
+      <div class="shell faq-grid">
+        <div class="faq-intro">
+          <div class="eyebrow"><span>05 / </span><span data-i18n="faqEyebrow"></span></div>
+          <h2 data-i18n-lines="faqTitle"></h2>
+          <p data-i18n="faqHelp"></p>
+          <button type="button" class="text-action js-cta"><svg width="17" height="17"><use href="#i-message"/></svg><span data-i18n="faqTalk"></span></button>
+        </div>
+        <div class="faq-list" id="faqList"></div>
+      </div>
+    </section>
+
+    <!-- الدعوة الختامية -->
+    <section id="contact" class="final-cta-section">
+      <div class="shell final-cta-inner">
+        <div class="cta-sparkle"><svg width="20" height="20"><use href="#i-zap"/></svg></div>
+        <div>
+          <div class="eyebrow">LTS / LET’S TALK</div>
+          <h2 data-i18n="finalTitle"></h2>
+          <p data-i18n="finalBody"></p>
+        </div>
+        <a class="button-light" id="ctaLink" target="_blank" rel="noreferrer"><span data-i18n="cta"></span><svg width="17" height="17"><use href="#i-arrow"/></svg></a>
+      </div>
+    </section>
+  </main>
+
+  <!-- الفوتر -->
+  <footer class="site-footer" id="footer">
+    <div class="shell footer-cols">
+
+      <!-- العمود 1: عن المركز + معلومات مفيدة -->
+      <section class="footer-col footer-about">
+        <a class="brand" href="#top" aria-label="LTS home">
+          <span class="brand-mark"><span>L</span><span>T</span><span>S</span></span>
+          <span class="brand-copy"><strong>LTS</strong><small>LANGUAGE STUDIO</small></span>
+        </a>
+        <h4 class="footer-title" data-i18n="aboutTitle"></h4>
+        <p class="footer-text" data-i18n="aboutText"></p>
+        <h4 class="footer-title" data-i18n="infoTitle"></h4>
+        <p class="footer-text" data-i18n="infoText"></p>
+      </section>
+
+      <!-- العمود 2: روابط مفيدة (بتتولد من script.js) -->
+      <section class="footer-col">
+        <h4 class="footer-title" data-i18n="linksTitle"></h4>
+        <ul class="footer-link-list" id="footerLinks"></ul>
+      </section>
+
+      <!-- العمود 3: اتصل بنا + ابق على اتصال -->
+      <section class="footer-col">
+        <h4 class="footer-title" data-i18n="contactTitle"></h4>
+        <ul class="footer-contact" id="footerContact"></ul>
+        <h4 class="footer-title" data-i18n="stayTitle"></h4>
+        <div class="footer-social">
+          <a id="footerFacebook" target="_blank" rel="noreferrer" aria-label="Facebook"><svg width="26" height="26"><use href="#i-facebook"/></svg></a>
+          <a id="footerInstagram" target="_blank" rel="noreferrer" aria-label="Instagram"><svg width="26" height="26"><use href="#i-instagram"/></svg></a>
+        </div>
+      </section>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="shell footer-bottom-inner">
+        <span>© 2024 LTS</span>
+        <span data-i18n="madeFor"></span>
+        <span class="developer-credit" data-i18n="developer"></span>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- شريط الكوكيز السفلي -->
+  <div class="cookie-bar" id="cookieBar" role="dialog" aria-live="polite" hidden>
+    <div class="cookie-inner">
+      <p class="cookie-text" data-i18n="cookieText"></p>
+      <div class="cookie-actions">
+        <button type="button" class="cookie-btn cookie-outline" id="cookieManage" data-i18n="cookieManage"></button>
+        <button type="button" class="cookie-btn" data-cookie="reject" data-i18n="cookieReject"></button>
+        <button type="button" class="cookie-btn" data-cookie="accept" data-i18n="cookieAccept"></button>
+      </div>
+      <button type="button" class="cookie-close" data-cookie="close" aria-label="Close"><svg width="18" height="18"><use href="#i-x"/></svg></button>
+    </div>
+    <div class="cookie-panel" id="cookiePanel" hidden>
+      <label><input type="checkbox" checked disabled /> <span data-i18n="cookieNecessary"></span></label>
+      <label><input type="checkbox" id="ckAnalytics" /> <span data-i18n="cookieAnalytics"></span></label>
+      <label><input type="checkbox" id="ckMarketing" /> <span data-i18n="cookieMarketing"></span></label>
+      <button type="button" class="cookie-btn" data-cookie="save" data-i18n="cookieSave"></button>
+    </div>
+  </div>
+
+  <div class="toast-message" id="toast" role="status" hidden>
+    <svg width="17" height="17"><use href="#i-check"/></svg><span id="toastText"></span>
+  </div>
+</div>
+
+<script>
+/* =========================================================
+   LTS English Learning Center - المنطق والتفاعلات
+   الملف ده فيه: الروابط، النصوص (عربي/إنجليزي)، الدورات، الأسئلة الشائعة
+   عشان تعدل أي نص أو دورة، عدّل هنا بس.
+   ========================================================= */
+
+/* ---------- 1) الروابط ---------- */
+const LINKS = {
+  contact:   "https://lts-english.com/details",
+  reviews:   "https://www.google.com/maps/search/LTS+English+Courses+Nasr+City+Cairo",
+  facebook:  "https://www.facebook.com/Lts.cairo/",
+  instagram: "https://www.instagram.com/lts.english/",
+};
+
+/* ---------- بيانات التواصل (املا اللي ناقص هنا وهيظهر في الفوتر تلقائي) ---------- */
+const CONTACT = {
+  address: { ar: "مدينة نصر، القاهرة، مصر", en: "Nasr City, Cairo, Egypt" },
+  phone: "",   // مثال: "+20 10 0000 0000"
+  email: "",   // مثال: "info@example.com"
+  hours: { ar: "", en: "" }, // مثال: { ar: "يوميًا من 10 ص إلى 8 م", en: "Daily 10 AM – 8 PM" }
+};
+
+/* روابط الفوتر (action = "cookies" بيفتح إعدادات الكوكيز) */
+const FOOTER_LINKS = [
+  { href: "#courses", label: { ar: "الدورات", en: "Courses" } },
+  { href: "#method",  label: { ar: "طريقة LTS", en: "The LTS method" } },
+  { href: "#stories", label: { ar: "آراء الطلاب", en: "Student reviews" } },
+  { href: "#faq",     label: { ar: "الأسئلة الشائعة", en: "FAQ" } },
+  { href: LINKS.contact, external: true, label: { ar: "احجز اختبارًا مجانيًا", en: "Book a free assessment" } },
+  { href: LINKS.reviews, external: true, label: { ar: "مراجعات Google", en: "Google reviews" } },
+  { href: "#", action: "cookies", label: { ar: "خيارات الخصوصية", en: "Privacy choices" } },
+];
+
+/* ---------- 2) الدورات ---------- */
+const COURSES = [
+  { category: "speaking",   code: "LTS / 01", accent: "#d9f8ef", students: "2.4K", hours: "32", featured: true,
+    title: { ar: "المحادثة بثقة", en: "Speak with Confidence" },
+    level: { ar: "متوسط · 8 أسابيع", en: "Intermediate · 8 weeks" },
+    description: { ar: "تحدث بطلاقة في المواقف اليومية والعمل.", en: "Speak naturally in everyday and work situations." } },
+  { category: "business",   code: "LTS / 02", accent: "#e8efff", students: "1.8K", hours: "24", featured: true,
+    title: { ar: "الإنجليزية للأعمال", en: "English for Business" },
+    level: { ar: "متقدم · 6 أسابيع", en: "Advanced · 6 weeks" },
+    description: { ar: "اكتب، ناقش، وقدّم أفكارك باحتراف.", en: "Write, discuss, and present ideas with confidence." } },
+  { category: "foundation", code: "LTS / 03", accent: "#fff0d5", students: "4.1K", hours: "40", featured: true,
+    title: { ar: "LTS للمبتدئين", en: "LTS for Beginners" },
+    level: { ar: "مبتدئ · 10 أسابيع", en: "Beginner · 10 weeks" },
+    description: { ar: "ابدأ من الصفر بخطوات واضحة ومنهج عملي.", en: "Start from zero with a clear, practical path." } },
+  { category: "test",       code: "LTS / 04", accent: "#f1e8ff", students: "1.2K", hours: "20",
+    title: { ar: "تحضير IELTS المكثف", en: "IELTS Intensive" },
+    level: { ar: "متقدم · 5 أسابيع", en: "Advanced · 5 weeks" },
+    description: { ar: "خطة عملية لرفع درجتك في كل مهارة.", en: "A practical plan to raise your score in every skill." } },
+  { category: "business",   code: "LTS / 05", accent: "#dceafe", students: "980", hours: "16",
+    title: { ar: "كتابة احترافية", en: "Professional Writing" },
+    level: { ar: "متوسط · 4 أسابيع", en: "Intermediate · 4 weeks" },
+    description: { ar: "حوّل أفكارك إلى رسائل ونصوص مؤثرة.", en: "Turn your ideas into clear, persuasive writing." } },
+  { category: "speaking",   code: "LTS / 06", accent: "#dbf7e7", students: "1.5K", hours: "12",
+    title: { ar: "نطق ولهجة أمريكية", en: "American Pronunciation" },
+    level: { ar: "كل المستويات · 3 أسابيع", en: "All levels · 3 weeks" },
+    description: { ar: "استمع بدقة وتحدث بوضوح أكبر.", en: "Listen more accurately and speak more clearly." } },
+];
+
+const CATEGORIES = {
+  all:        { ar: "كل الدورات",       en: "All courses" },
+  speaking:   { ar: "محادثة وتحدث",     en: "Speaking" },
+  business:   { ar: "إنجليزية الأعمال", en: "Business" },
+  foundation: { ar: "تأسيس",            en: "Foundations" },
+  test:       { ar: "اختبارات دولية",   en: "Test prep" },
+};
+
+/* ---------- 3) الأسئلة الشائعة ---------- */
+const FAQS = [
+  { q: { ar: "هل أحتاج إلى اختبار تحديد مستوى؟", en: "Do I need a placement test?" },
+    a: { ar: "نعم، نبدأ باختبار قصير ومحادثة بسيطة لنقترح عليك المسار المناسب بدقة.", en: "Yes. We start with a short assessment and a friendly conversation to recommend the right path." } },
+  { q: { ar: "هل الدورات مباشرة أم مسجلة؟", en: "Are classes live or recorded?" },
+    a: { ar: "مزيج من الاثنين: لقاءات مباشرة تفاعلية، ومكتبة دروس قصيرة يمكنك الرجوع إليها في أي وقت.", en: "A mix of both: interactive live sessions and a library of short lessons you can revisit anytime." } },
+  { q: { ar: "كم من الوقت أحتاج أسبوعيًا؟", en: "How much time do I need each week?" },
+    a: { ar: "يكفي تخصيص 3 إلى 5 ساعات أسبوعيًا. نصمم الخطة لتناسب جدولك ومستواك.", en: "Set aside 3–5 hours a week. We design the plan around your schedule and level." } },
+  { q: { ar: "هل أحصل على شهادة بعد إتمام الدورة؟", en: "Do I receive a certificate?" },
+    a: { ar: "نعم، تحصل على شهادة إتمام رقمية توضح المهارات التي طورتها خلال المسار.", en: "Yes. You receive a digital completion certificate showing the skills you developed." } },
+];
+
+/* ---------- 4) النصوص (عربي / إنجليزي) ---------- */
+const TEXT = {
+  ar: {
+    title: "LTS | مركزك للإنجليزية بثقة",
+    announce: "خصم 20% على أول مسار لك — ابدأ اليوم بخطوة واضحة",
+    explore: "استكشف الدورات",
+    nav: ["الرئيسية", "الدورات", "كيف نعمل", "آراء الطلاب"],
+    start:" ابدا اول اختبار ليك ",
+    heroEyebrow: "تعلّم الإنجليزية بطريقة تشبه حياتك",
+    heroTitle: "لغة أقوى.\nفرص أكبر.",
+    heroBody: "في LTS لا نحفظك كلمات فقط. نساعدك على استخدام الإنجليزية بثقة في العمل، الدراسة، وكل لحظة تهمك.",
+    learnMore: "اكتشف المنهج",
+    proof: "اختارنا أكثر من 18,000 متعلم لبناء مستقبلهم باللغة الإنجليزية",
+    heroProgress: "تقدّم في 8 أسابيع",
+    heroRight: "أنت في المكان الصحيح",
+    heroVoice: "تعلم بصوتك",
+    heroSticker: "تعلّم بذكاء",
+    statsIntro: "أرقام حقيقية، وتجارب إنسانية.",
+    stats: ["متعلم حول العالم", "دورة تفاعلية", "نسبة رضا"],
+    pathsLabel: "المسارات",
+    pathTitle: "اختر المسار الذي يناسبك",
+    pathBody: "من أول كلمة إلى محادثة احترافية — خطوة واحدة في كل مرة.",
+    methodNote: "ممارسات صغيرة، فرق كبير.",
+    methodLabel: "استمع. تحدث. تقدّم.",
+    methodEyebrow: "طريقة LTS",
+    methodTitle: "تعلم واضح،\nتقدم ملموس.",
+    methodBody: "نمزج بين التدريب العملي، التوجيه الإنساني، وأدوات بسيطة تمنحك تقدمًا تراه وتسمعه.",
+    methodPoints: ["جلسات قصيرة ومركزة", "تغذية راجعة من مدربين حقيقيين", "مسار يتطور معك"],
+    methodLink: "تعرف على تجربتك",
+    curatedLabel: "اختياراتنا",
+    featured: "دورات مختارة",
+    viewAll: "عرض كل الدورات",
+    reviewsLabel: "مراجعات Google",
+    testimonials: "آراء حقيقية من Google",
+    testimonialsBody: "تصفح تجارب الطلاب من المصدر الرسمي مباشرة، وتعرّف على رأيهم قبل أن تبدأ.",
+    reviewTitle: "اقرأ المراجعات من المصدر الرسمي",
+    reviewText: "نترك المراجعات على Google مباشرة حتى تبقى الأسماء والتقييمات والتجارب محدثة وموثوقة.",
+    reviewBtn: "عرض مراجعات Google",
+    faqEyebrow: "أسئلة شائعة",
+    faqTitle: "كل ما تحتاج معرفته\nقبل أن تبدأ.",
+    faqHelp: "لم تجد إجابتك؟ فريقنا جاهز للمساعدة.",
+    faqTalk: "تحدث مع فريقنا",
+    finalTitle: "جاهز تتكلم بثقة؟",
+    finalBody: "احجز اختبارك المجاني اليوم، وسنقترح لك أقصر طريق إلى هدفك.",
+    cta: "احجز اختبارًا مجانيًا",
+    footer: "تعلم الإنجليزية التي تفتح لك الأبواب.",
+    footerLinks: ["الدورات", "عن LTS", "تواصل معنا"],
+    madeFor: "صنع للمتعلمين الطموحين",
+    developer: "تطوير LUXORA11",
+    // نصوص بطاقات الدورات
+    learners: "متعلم", hours: "ساعة", startHere: "ابدأ من هنا", more: "اعرف المزيد", preview: "معاينة الدورة",
+    noResults: "لا توجد دورات في هذا التصنيف حاليًا.",
+    toast: "رائع — سنساعدك في اختيار المسار المناسب!",
+    cookieText: "نستخدم ملفات تعريف الارتباط وتقنيات مشابهة لتحسين تجربتك وتحليل استخدام الموقع ودعم جهودنا التسويقية. يمكنك السماح بها أو رفضها أو اختيار ما يناسبك.",
+    cookieManage: "إدارة الكوكيز", cookieReject: "رفض الكل", cookieAccept: "قبول الكل",
+    cookieNecessary: "ضرورية (دائمًا مفعّلة)", cookieAnalytics: "التحليلات", cookieMarketing: "التسويق", cookieSave: "حفظ اختياراتي",
+    aboutTitle: "LTS مركز تعلّم الإنجليزية",
+    aboutText: "مركز متخصص في تعليم اللغة الإنجليزية. نساعد الطلاب والمهنيين على استخدامها بثقة في الدراسة والعمل والحياة اليومية، من خلال مسارات واضحة ومدربين حقيقيين.",
+    infoTitle: "معلومات مفيدة",
+    infoText: "نبدأ باختبار تحديد مستوى قصير لاقتراح المسار المناسب. الدورات تجمع بين لقاءات مباشرة ودروس مسجلة، ويكفي تخصيص 3 إلى 5 ساعات أسبوعيًا، وتحصل على شهادة إتمام رقمية بعد المسار.",
+    linksTitle: "روابط مفيدة", contactTitle: "اتصل بنا", stayTitle: "ابق على اتصال",
+    phoneLabel: "الهاتف", emailLabel: "البريد الإلكتروني", hoursLabel: "ساعات العمل", detailsLink: "التفاصيل والحجز الرسمي",
+    langLong: "English", langShort: "EN",
+  },
+  en: {
+    title: "LTS | English with confidence",
+    announce: "20% off your first path — start with one clear step",
+    explore: "Explore courses",
+    nav: ["Home", "Courses", "How it works", "Stories"],
+    start: "Take  your first assessment",
+    heroEyebrow: "English learning that fits your life",
+    heroTitle: "A stronger voice.\nA bigger world.",
+    heroBody: "At LTS, we do more than teach words. We help you use English with confidence at work, in study, and in every moment that matters.",
+    learnMore: "See our method",
+    proof: "Chosen by 18,000+ learners building their future in English",
+    heroProgress: "progress in 8 weeks",
+    heroRight: "You’re in the right place",
+    heroVoice: "Learn in your voice",
+    heroSticker: "Learn smarter",
+    statsIntro: "Real numbers, human stories.",
+    stats: ["learners worldwide", "interactive courses", "satisfaction rate"],
+    pathsLabel: "PATHS",
+    pathTitle: "Find your right path",
+    pathBody: "From your first word to confident conversation — one step at a time.",
+    methodNote: "Small practice, big difference.",
+    methodLabel: "Listen. Speak. Grow.",
+    methodEyebrow: "The LTS method",
+    methodTitle: "Clear learning.\nVisible progress.",
+    methodBody: "We combine real practice, human guidance, and simple tools that make progress something you can see and hear.",
+    methodPoints: ["Short, focused sessions", "Feedback from real coaches", "A path that grows with you"],
+    methodLink: "See your experience",
+    curatedLabel: "CURATED",
+    featured: "Featured courses",
+    viewAll: "View all courses",
+    reviewsLabel: "GOOGLE REVIEWS",
+    testimonials: "Real reviews on Google",
+    testimonialsBody: "Explore student experiences from the official source before you start.",
+    reviewTitle: "Read reviews from the official source",
+    reviewText: "We keep reviews on Google so names, ratings, and experiences stay current and authentic.",
+    reviewBtn: "View Google reviews",
+    faqEyebrow: "Frequently asked",
+    faqTitle: "Everything you need\nbefore you begin.",
+    faqHelp: "Didn't find your answer? Our team is here to help.",
+    faqTalk: "Talk to our team",
+    finalTitle: "Ready to speak with confidence?",
+    finalBody: "Book your free assessment today and we’ll suggest the shortest path to your goal.",
+    cta: "Book a free assessment",
+    footer: "Learn the English that opens doors.",
+    footerLinks: ["Courses", "About LTS", "Contact us"],
+    madeFor: "Made for ambitious learners",
+    developer: "Developed by LUXORA11",
+    learners: "learners", hours: "hours", startHere: "START HERE", more: "Learn more", preview: "Preview course",
+    noResults: "No courses in this category yet.",
+    toast: "Nice — we’ll help you find the right path!",
+    cookieText: "We use cookies and similar technologies to improve your experience, analyze site usage, and support our marketing efforts. You can allow all, reject all, or choose what suits you.",
+    cookieManage: "Manage Cookies", cookieReject: "Reject All", cookieAccept: "Accept All",
+    cookieNecessary: "Necessary (always on)", cookieAnalytics: "Analytics", cookieMarketing: "Marketing", cookieSave: "Save my choices",
+    aboutTitle: "LTS English Learning Center",
+    aboutText: "A center dedicated to teaching English. We help students and professionals use it with confidence in study, at work, and in daily life, through clear paths and real coaches.",
+    infoTitle: "Helpful information",
+    infoText: "We begin with a short placement test to recommend the right path. Courses combine live sessions and recorded lessons, 3–5 hours a week is enough, and you receive a digital completion certificate.",
+    linksTitle: "Useful links", contactTitle: "Contact us", stayTitle: "Stay connected",
+    phoneLabel: "Phone", emailLabel: "Email", hoursLabel: "Opening hours", detailsLink: "Official details & booking",
+    langLong: "العربية", langShort: "AR",
+  },
+};
+
+/* ---------- 5) الحالة العامة ---------- */
+const state = { lang: "ar", category: "all", openFaq: 0 };
+const $ = (sel, root = document) => root.querySelector(sel);
+const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
+const t = () => TEXT[state.lang];
+
+/* بيجيب قيمة زي "nav.2" من الكائن */
+const lookup = (key) => key.split(".").reduce((obj, k) => (obj ? obj[k] : undefined), t());
+
+/* ---------- 6) الرسم (Render) ---------- */
+const arrowIcon = (size) => `<svg width="${size}" height="${size}"><use href="#i-arrow"/></svg>`;
+
+function courseCard(course, featured = false) {
+  const L = state.lang;
+  return `
+    <article class="course-card ${featured ? "course-card-featured" : ""}">
+      <div class="course-image-wrap" style="--course-accent:${course.accent}">
+        <div class="course-cover-grid"></div>
+        <div class="course-cover-brand"><span>LTS</span><small>${course.code}</small></div>
+        <div class="course-cover-title">${t().startHere}<strong>${course.title[L]}</strong></div>
+        <span class="course-badge" style="background-color:${course.accent}">${course.level[L]}</span>
+        <button class="course-play" type="button" aria-label="${t().preview}"><svg width="14" height="14"><use href="#i-play"/></svg></button>
+      </div>
+      <div class="course-body">
+        <div class="course-meta"><span>${course.students} ${t().learners}</span><span>${course.hours} ${t().hours}</span></div>
+        <h3>${course.title[L]}</h3>
+        <p>${course.description[L]}</p>
+        <button type="button" class="course-link js-cta">${t().more}${arrowIcon(15)}</button>
+      </div>
+    </article>`;
+}
+
+function renderCourses() {
+  const list = state.category === "all" ? COURSES : COURSES.filter((c) => c.category === state.category);
+  $("#courseGrid").innerHTML = list.length
+    ? list.map((c) => courseCard(c)).join("")
+    : `<div class="empty-state">${t().noResults}</div>`;
+  $("#featuredGrid").innerHTML = COURSES.filter((c) => c.featured).map((c) => courseCard(c, true)).join("");
+}
+
+function renderCategories() {
+  $("#categoryRow").innerHTML = Object.keys(CATEGORIES)
+    .map((key) => `<button type="button" role="tab" aria-selected="${state.category === key}" class="category-pill ${state.category === key ? "active" : ""}" data-category="${key}">${CATEGORIES[key][state.lang]}</button>`)
+    .join("");
+}
+
+function renderFaqs() {
+  $("#faqList").innerHTML = FAQS.map((f, i) => `
+    <div class="faq-item ${state.openFaq === i ? "open" : ""}">
+      <button type="button" data-faq="${i}" aria-expanded="${state.openFaq === i}">
+        <span>${f.q[state.lang]}</span><svg width="19" height="19"><use href="#i-chevron"/></svg>
+      </button>
+      ${state.openFaq === i ? `<p>${f.a[state.lang]}</p>` : ""}
+    </div>`).join("");
+}
+
+function renderMethodList() {
+  $("#methodList").innerHTML = t().methodPoints
+    .map((p) => `<li><span><svg width="14" height="14"><use href="#i-check"/></svg></span>${p}</li>`).join("");
+}
+
+
+function renderFooter() {
+  const L = state.lang;
+  const ext = '<svg class="ext-icon" width="13" height="13"><use href="#i-external"/></svg>';
+  $("#footerLinks").innerHTML = FOOTER_LINKS.map((l) => {
+    const attrs = l.external ? 'target="_blank" rel="noreferrer"' : l.action ? `data-action="${l.action}"` : "";
+    return `<li><a href="${l.href}" ${attrs}>${l.label[L]}${l.external ? ext : ""}</a></li>`;
+  }).join("");
+
+  const rows = [`<li class="contact-address"><svg width="16" height="16"><use href="#i-pin"/></svg><span>${CONTACT.address[L]}</span></li>`];
+  if (CONTACT.phone) rows.push(`<li><svg width="16" height="16"><use href="#i-phone"/></svg><span>${t().phoneLabel}: <a dir="ltr" href="tel:${CONTACT.phone.replace(/\s/g, "")}">${CONTACT.phone}</a></span></li>`);
+  if (CONTACT.email) rows.push(`<li><svg width="16" height="16"><use href="#i-mail"/></svg><span>${t().emailLabel}: <a href="mailto:${CONTACT.email}">${CONTACT.email}</a></span></li>`);
+  if (CONTACT.hours[L]) rows.push(`<li><svg width="16" height="16"><use href="#i-book"/></svg><span>${t().hoursLabel}: ${CONTACT.hours[L]}</span></li>`);
+  rows.push(`<li class="contact-details"><a href="${LINKS.contact}" target="_blank" rel="noreferrer">${t().detailsLink}${ext}</a></li>`);
+  $("#footerContact").innerHTML = rows.join("");
+}
+
+/* بيملى كل العناصر اللي عليها data-i18n */
+function renderStaticText() {
+  $$("[data-i18n]").forEach((el) => { el.textContent = lookup(el.dataset.i18n); });
+  $$("[data-i18n-lines]").forEach((el) => {
+    el.innerHTML = lookup(el.dataset.i18nLines).split("\n").map((line) => `<span>${line}</span>`).join("");
+  });
+  $$(".lang-label-long").forEach((el) => (el.textContent = t().langLong));
+  $$(".lang-label-short").forEach((el) => (el.textContent = t().langShort));
+}
+
+function renderAll() {
+  const isAr = state.lang === "ar";
+  document.documentElement.lang = state.lang;
+  document.documentElement.dir = isAr ? "rtl" : "ltr";
+  document.title = t().title;
+  renderStaticText();
+  renderCategories();
+  renderCourses();
+  renderMethodList();
+  renderFaqs();
+  renderFooter();
+}
+
+/* ---------- 7) التفاعلات ---------- */
+let toastTimer;
+function showToast(message) {
+  $("#toastText").textContent = message;
+  $("#toast").hidden = false;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => ($("#toast").hidden = true), 3200);
+}
+
+function openContact() {
+  showToast(t().toast);
+  window.open(LINKS.contact, "_blank", "noopener,noreferrer");
+}
+
+function setMenu(open) {
+  $("#mainNav").classList.toggle("is-open", open);
+  $("#menuIcon").setAttribute("href", open ? "#i-x" : "#i-menu");
+}
+
+function toggleLanguage() {
+  state.lang = state.lang === "ar" ? "en" : "ar";
+  setMenu(false);
+  renderAll();
+}
+
+/* نستخدم Event delegation عشان العناصر اللي بتتولد بالـ JS تشتغل برضه */
+document.addEventListener("click", (e) => {
+  const target = e.target.closest("button, a");
+  if (!target) return;
+
+  if (target.dataset.action === "cookies") {
+    e.preventDefault();
+    $("#cookieBar").hidden = false;
+    $("#cookiePanel").hidden = false;
+    return;
+  }
+  if (target.dataset.cookie) return handleCookie(target.dataset.cookie);
+  if (target.id === "cookieManage") { $("#cookiePanel").hidden = !$("#cookiePanel").hidden; return; }
+
+  if (target.classList.contains("js-cta")) return openContact();
+  if (target.classList.contains("js-lang")) return toggleLanguage();
+
+  if (target.classList.contains("js-scroll")) {
+    return document.getElementById(target.dataset.target)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+  if (target.id === "menuToggle") return setMenu(!$("#mainNav").classList.contains("is-open"));
+  if (target.closest("#mainNav") && target.tagName === "A") return setMenu(false);
+
+  if (target.dataset.category) {
+    state.category = target.dataset.category;
+    renderCategories();
+    return renderCourses();
+  }
+  if (target.dataset.faq !== undefined) {
+    const i = Number(target.dataset.faq);
+    state.openFaq = state.openFaq === i ? null : i;
+    return renderFaqs();
+  }
+  if (target.id === "viewAll") {
+    state.category = "all";
+    renderCategories();
+    renderCourses();
+    document.getElementById("courses").scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+});
+
+
+/* ---------- شريط الكوكيز ---------- */
+const COOKIE_KEY = "lts-cookie-consent";
+const cookieStore = {
+  get() { try { return localStorage.getItem(COOKIE_KEY); } catch { return null; } },
+  set(v) { try { localStorage.setItem(COOKIE_KEY, v); } catch { /* التخزين مش متاح */ } },
+};
+function closeCookieBar(choice) {
+  if (choice) cookieStore.set(JSON.stringify(choice));
+  $("#cookieBar").hidden = true;
+}
+function handleCookie(action) {
+  if (action === "accept") closeCookieBar({ analytics: true, marketing: true });
+  else if (action === "reject") closeCookieBar({ analytics: false, marketing: false });
+  else if (action === "save") closeCookieBar({ analytics: $("#ckAnalytics").checked, marketing: $("#ckMarketing").checked });
+  else closeCookieBar(); // زرار الإغلاق: بيخفي الشريط من غير ما يحفظ اختيار
+}
+if (!cookieStore.get()) $("#cookieBar").hidden = false;
+
+/* ---------- 8) تشغيل ---------- */
+$("#googleLink").href = LINKS.reviews;
+$("#facebookLink").href = LINKS.facebook;
+$("#instagramLink").href = LINKS.instagram;
+$("#ctaLink").href = LINKS.contact;
+$("#footerFacebook").href = LINKS.facebook;
+$("#footerInstagram").href = LINKS.instagram;
+renderAll();
+
+</script>
+</body>
+</html>
